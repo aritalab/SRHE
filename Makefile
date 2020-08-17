@@ -8,11 +8,11 @@ LDFLAGS= -L. -lsbr2 -lntl -lgmp #-lrt
 LOGSHE = ./log/log-she
 PARAMS = ./params/params
 
-HEADER = params.h fft.h nsgen.h ring.h she.h util.h
+HEADER = params.h nsgen.h ring.h she.h util.h
 
-OBJ = fft.o  nsgen.o  ring_init.o ring.o she.o util.o
+OBJ = nsgen.o ring_init.o ring.o she.o util.o
 
-TESTPROGS = fftTest nsgenTest ringTest sheTest
+TESTPROGS = nsgenTest ringTest sheTest
 
 %.o: %.cpp $(HEADER)
 	$(CC) $(CFLAGS) -c $<
@@ -20,13 +20,10 @@ TESTPROGS = fftTest nsgenTest ringTest sheTest
 all: $(OBJ) libsbr2.a $(TESTPROGS)
 
 clean:
-	rm $(OBJ) *~ libsbr2.a $(TESTPROGS)
+	rm -f $(OBJ) *~ libsbr2.a $(TESTPROGS)
 
 libsbr2.a: $(OBJ)
 	$(AR) -rv libsbr2.a $(OBJ)
-
-fftTest: fftTest.cpp libsbr2.a
-	$(CC) $(CFLAGS) -o fftTest fftTest.cpp $(LDFLAGS)
 
 nsgenTest: nsgenTest.cpp libsbr2.a
 	$(CC) $(CFLAGS) -o nsgenTest nsgenTest.cpp $(LDFLAGS)
