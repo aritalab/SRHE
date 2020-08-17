@@ -7,10 +7,12 @@
 #include <NTL/vec_ZZ.h>
 #include <NTL/ZZ_p.h>
 #include <NTL/vec_ZZ_p.h>
-#include "fft.h"
 
 using namespace std;
 using namespace NTL;
+
+// auxiliary constants
+static double const Pi=4.0*atan(1.0); // Pi=3.1415..
 
 class noise {
  public:

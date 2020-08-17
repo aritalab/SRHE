@@ -1,4 +1,3 @@
-#include "fft.h"
 #include "nsgen.h"
 
 void noise::hamming (vec_ZZ& s, long dim) {
